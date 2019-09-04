@@ -2,19 +2,18 @@ import React, { useState, useEffect } from 'react'
 import axios from  'axios'
 import { Redirect } from 'react-router-dom'
 
-const EditarGenero = ({ match }) => {
+const EditarGenero = ({match}) => {
     const [name, setName] = useState('')
     const [success, setSuccess] = useState(false)
 
     useEffect(() => {
-        axios
-            .get('/api/genres/' + match.params.id)
+        axios.get('/api/genres/' + match.params.id)
             .then(res => {
                 setName(res.data.name)
-            },[match.params.id])
-    })
+                
+            })
+    },[match.params.id])
 
-    //console.log(match)
     const onChange = evt => {
         setName(evt.target.value)
     }
